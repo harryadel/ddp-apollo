@@ -1,7 +1,7 @@
 /* eslint-disable prefer-arrow-callback, func-names */
 /* eslint-env mocha */
 import chai from 'chai';
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import gql from 'graphql-tag';
 import { ApolloGateway, LocalGraphQLDataSource } from '@apollo/gateway';
 import { buildFederatedSchema } from '@apollo/federation';
