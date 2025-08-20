@@ -50,11 +50,11 @@ Checkout this [starter kit](https://github.com/jamiter/meteor-starter-kit) to se
 ## Installation
 
 ```
-meteor add swydo:ddp-apollo
+meteor add orderlion:ddp-apollo
 ```
 
 ```
-meteor npm install --save @apollo/client @swydo/apollo-link-ddp graphql
+meteor npm install --save @apollo/client @swydo/apollo-link-ddp graphql @graphql-tools/schema
 ```
 
 ## Client setup
@@ -90,7 +90,7 @@ The server will add a method and publication that will be used by the DDP Apollo
 
 ```javascript
 import { schema } from './path/to/your/executable/schema';
-import { setup } from 'meteor/swydo:ddp-apollo';
+import { setup } from 'meteor/orderlion:ddp-apollo';
 
 setup({
   schema,
@@ -243,7 +243,7 @@ export const client = new ApolloClient ({
 ### Server setup
 ```js
 import { schema } from './path/to/your/executable/schema';
-import { setupHttpEndpoint, createGraphQLPublication } from 'meteor/swydo:ddp-apollo';
+import { setupHttpEndpoint, createGraphQLPublication } from 'meteor/orderlion:ddp-apollo';
 
 setupHttpEndpoint({
   schema,
