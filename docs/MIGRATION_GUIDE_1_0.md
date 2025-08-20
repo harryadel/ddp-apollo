@@ -25,7 +25,7 @@ meteor npm install --save apollo-link graphql
 ### Previously
 ```javascript
 import ApolloClient from 'apollo-client';
-import { DDPNetworkInterface } from 'meteor/swydo:ddp-apollo';
+import { DDPNetworkInterface } from 'meteor/orderlion:ddp-apollo';
 
 export const client = new ApolloClient ({
   networkInterface: new DDPNetworkInterface()
@@ -35,7 +35,7 @@ export const client = new ApolloClient ({
 ### Now
 ```javascript
 import ApolloClient from 'apollo-client';
-import { DDPLink } from 'meteor/swydo:ddp-apollo';
+import { DDPLink } from 'meteor/orderlion:ddp-apollo';
 // Apollo Clietn 2 requires a cache to be added as well
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
@@ -50,7 +50,7 @@ export const client = new ApolloClient ({
 ### Previously
 ```javascript
 import { schema } from './path/to/your/executable/schema';
-import { setup } from 'meteor/swydo:ddp-apollo';
+import { setup } from 'meteor/orderlion:ddp-apollo';
 
 setup(schema, {
   ...otherOptions
@@ -60,7 +60,7 @@ setup(schema, {
 ### Now
 ```javascript
 import { schema } from './path/to/your/executable/schema';
-import { setup } from 'meteor/swydo:ddp-apollo';
+import { setup } from 'meteor/orderlion:ddp-apollo';
 
 setup({
   schema,
