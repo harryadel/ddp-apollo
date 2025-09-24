@@ -1,6 +1,6 @@
 {
-  "name": "@swydo/apollo-link-ddp",
-  "version": "4.0.2",
+  "name": "meteor-apollo-link-ddp",
+  "version": "4.0.3",
   "description": "Apollo Link using DDP",
   "main": "src/index.js",
   "browser": "dist/index.js",
@@ -14,7 +14,7 @@
     "@graphql-tools/schema": "^9.0.0"
   },
   "scripts": {
-    "build": "@babel/cli src --out-dir dist",
+    "build": "babel src --out-dir dist",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
