@@ -2,8 +2,8 @@ import { Meteor } from 'meteor/meteor';
 import {
   DEFAULT_PUBLICATION,
   GRAPHQL_SUBSCRIPTION_MESSAGE_TYPE,
-} from '@swydo/apollo-link-ddp';
-import { subscribe } from 'graphql';
+} from 'meteor-apollo-link-ddp';
+import { subscribe as defaultSubscribe } from 'graphql';
 import forAwaitEach from './forAwaitEach';
 import { contextToFunction } from './contextToFunction';
 
@@ -15,9 +15,13 @@ export function createGraphQLPublication({
   schema,
   context,
   publication = DEFAULT_PUBLICATION,
+  graphqlSubscribe,  // Optional parameter
 } = {}) {
-  if (!subscribe) {
-    warn('DDP-Apollo: You need graphl@0.11 or higher for subscription support');
+  // Use provided subscribe or fall back to imported one
+  const subscribeFunction = graphqlSubscribe || defaultSubscribe;
+  
+  if (!subscribeFunction) {
+    warn('DDP-Apollo: You need graphql@0.11 or higher for subscription support');
     return;
   }
 
@@ -42,7 +46,7 @@ export function createGraphQLPublication({
 
     Promise.resolve()
       .then(() => createContext({ userId, ddpConnection }, clientContext))
-      .then((completeContext) => subscribe({
+      .then((completeContext) => subscribeFunction({
         schema,
         document: query,
         rootValue: {},

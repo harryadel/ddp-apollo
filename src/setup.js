@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import {
   DEFAULT_METHOD,
-} from '@swydo/apollo-link-ddp';
+} from 'meteor-apollo-link-ddp';
 import { initSchema } from './initSchema';
 import { createExecutor } from './createExecutor';
 import { createGraphQLMethod } from './createGraphQLMethod';
@@ -14,6 +14,8 @@ export async function setup({
   method = DEFAULT_METHOD,
   publication,
   context,
+  graphqlExecute,      // Optional: allows passing execute from app
+  graphqlSubscribe,    // Optional: allows passing subscribe from app
 } = {}) {
   const {
     schema: initializedSchema,
@@ -26,7 +28,7 @@ export async function setup({
   Meteor.methods({
     [method]: createGraphQLMethod({
       schema: initializedSchema,
-      execute: createExecutor(gatewayExecutor),
+      execute: createExecutor(gatewayExecutor, graphqlExecute),
       context,
     }),
   });
@@ -36,6 +38,7 @@ export async function setup({
       schema: initializedSchema,
       publication,
       context,
+      graphqlSubscribe,
     });
   }
 }

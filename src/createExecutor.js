@@ -1,6 +1,9 @@
-import { execute } from 'graphql';
+import { execute as defaultExecute } from 'graphql';
 
-export function createExecutor(gatewayExecutor) {
+export function createExecutor(gatewayExecutor, graphqlExecute) {
+  // Use provided execute or fall back to imported one
+  const executeFunction = graphqlExecute || defaultExecute;
+  
   return function executor({
     schema,
     query,
@@ -21,7 +24,7 @@ export function createExecutor(gatewayExecutor) {
       });
     }
 
-    return execute({
+    return executeFunction({
       schema,
       document: query,
       rootValue: {},
