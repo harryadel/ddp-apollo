@@ -2,7 +2,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import {
   DEFAULT_METHOD,
   DEFAULT_PUBLICATION,
-} from '@swydo/apollo-link-ddp';
+} from 'meteor-apollo-link-ddp';
 import { pubsub } from '../data/pubsub';
 import { setup, setupHttpEndpoint } from '../../src/setup';
 

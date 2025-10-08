@@ -54,16 +54,16 @@ meteor add orderlion:ddp-apollo
 ```
 
 ```
-meteor npm install --save @apollo/client @swydo/apollo-link-ddp graphql @graphql-tools/schema
+meteor npm install --save @apollo/client meteor-apollo-link-ddp graphql @graphql-tools/schema
 ```
 
 ## Client setup
-All client code is in the `@swydo/apollo-link-ddp` npm package. It gives you a `DDPLink` for your Apollo Client. Creating an Apollo Client is the same as with any other Apollo Link.
+All client code is in the `meteor-apollo-link-ddp` npm package. It gives you a `DDPLink` for your Apollo Client. Creating an Apollo Client is the same as with any other Apollo Link.
 
 ```javascript
 // Choose any cache implementation, but we'll use InMemoryCache as an example
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-import { DDPLink } from '@swydo/apollo-link-ddp';
+import { DDPLink } from 'meteor-apollo-link-ddp';
 
 export const client = new ApolloClient ({
   link: new DDPLink(),
@@ -178,7 +178,7 @@ If you already have an HTTP server setup and you are looking to support GraphQL 
 
 ```javascript
 import { ApolloClient, InMemoryCache, HttpLink, split } from '@apollo/client';
-import { DDPSubscriptionLink, isSubscription } from '@swydo/apollo-link-ddp';
+import { DDPSubscriptionLink, isSubscription } from 'meteor-apollo-link-ddp';
 
 const httpLink = new HttpLink({ uri: "/graphql" });
 const subscriptionLink = new DDPSubscriptionLink();
@@ -232,7 +232,7 @@ meteor npm install @apollo/client body-parser
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 // Use the MeteorLink instead of the DDPLink
 // It uses HTTP for queries and Meteor subscriptions (DDP) for GraphQL subscriptions
-import { MeteorLink } from '@swydo/apollo-link-ddp';
+import { MeteorLink } from 'meteor-apollo-link-ddp';
 
 export const client = new ApolloClient ({
   link: new MeteorLink(),

@@ -14,6 +14,13 @@ Package.describe({
   documentation: 'README.md',
 });
 
+Npm.depends({
+  'meteor-apollo-link-ddp': '4.0.3',
+});
+
+// GraphQL and @graphql-tools packages are provided as peer dependencies
+// from the main package.json to avoid "Cannot use GraphQLSchema from another module or realm" errors
+
 Package.onUse(function use(api) {
   api.versionsFrom(['2.8.2', '3.0']);
   api.use(packages);
